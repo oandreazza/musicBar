@@ -9,6 +9,40 @@
     <meta name="author" content="">
     <link href="<c:url value="/assets/css/bootstrap.css"/>" rel="stylesheet" />
     <link href="<c:url value="/assets/css/bootstrap-responsive.css"/>" rel="stylesheet" />
+    <script type="text/javascript" src="<c:url value="/assets/js/jquery-1.7.2.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/assets/js/bootstrap-modal.js"/>"></script>
+    
+    <script type="text/javascript">
+    $(function(){
+    	$('#lista-disponiveis li a').on('click',function(){
+    		var podeTransferir = true;
+    		var texto = $(this).parent().find(".nome").text();
+    		var id = $(this).parent().attr('id');
+    		
+    		$('#lista-atual li').each(function(){
+    			if($(this).attr('id') == id){
+    				podeTransferir = false;
+    				return false;
+    			}  				
+    		});
+    		
+    		if(podeTransferir){
+    			$('#lista-atual').prepend($('<li>',{
+    					text: texto,
+    					id: id 
+    				}));
+    			
+    			$('#form-music').prepend($('<input>',{
+					type: 'hidden',
+					value: id,
+					name: 'ids[]'
+				}));
+    		}else{
+    			$('#myModal').modal();
+    		}
+    	});
+    });
+    </script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -26,36 +60,78 @@
     	
     	.list ul{
     		list-style: none;
-border: 1px solid black;
-padding: 5px;
+			margin: 23px 3px 3px  3px;
 
+    	}
+    	
+    	.list ul li{
+    		border: 1px solid black;
+    		padding: 5px;
+    		margin-bottom: 3px;
+    		display: block;
+    	}
+    	
+    	#header{
+    		height: 100px;
+    	}
+    	#botoes-form{
+    		margin-top: 10px;
     	}
     </style>
  </head>
 <body>
-<div class='row-fluid'>
-	<div class="span6">
-		<div class='row-fluid show-grid'>
-			<div class="list">
-				<ul>
-					<li>
-						Musica 1
-					</li>
-				</ul>
+	
+	<div class='row-fluid'>
+		<div class="span12" id="header">
+		</div>
+	</div>
+	
+	<div class='row-fluid'>
+		<div class="span6">
+			<div class='row-fluid show-grid'>
+				<div class="list">
+					<ul id="lista-disponiveis">
+						<li id="4">
+							<a href="#">+</a> 
+							<span class="nome">Musica 1</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span6">
+			<div class='row-fluid show-grid'>
+				<div class="list">
+					<ul id="lista-atual">
+					</ul>
+				</div>
+			</div>
+			<div class='row-fluid' id="botoes-form">
+				<div class="span8">
+				</div>
+				<div class="span4">	
+					<button class="btn">Limpar a lista</button>
+					<button class="btn btn-primary">Salvar</button>
+					<form action="<c:url value="/acervo/salvar"/>" method="post" id="form-music">
+						<input type="submit" value="enviar" />  
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="span6">
-		<div class='row-fluid show-grid'>
-			<div class="list">
-				<ul>
-					<li>
-						Musica 2
-					</li>
-				</ul>
-			</div>
+	
+	<div class="modal hide" id="myModal">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">×</button>
+		  <h3>Atenção!</h3>
+		</div>
+		<div class="modal-body">
+		  <p>Esta música já existe no Acervo!<br>Por favor, escolha outra.</p>
+		</div>
+		<div class="modal-footer">
+		  <a href="#" class="btn" data-dismiss="modal">OK</a>
 		</div>
 	</div>
-</div>
 </body>
 </html>

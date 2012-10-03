@@ -17,6 +17,7 @@
 package br.com.caelum.vraptor.blank;
 
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
@@ -29,9 +30,17 @@ public class IndexController {
 		this.result = result;
 	}
 
-	@Path("/")
+	@Path("/acervo")
 	public void index() {
 		result.include("variable", "VRaptor!");
 	}
+	
+	@Post
+	@Path("/acervo/salvar")
+	public void save(Long[] ids){
+		System.out.println(ids);
+	}
+	
+	
 
 }
