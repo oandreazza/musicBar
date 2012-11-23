@@ -16,6 +16,7 @@
  */
 package br.com.musicbar.controller;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -63,6 +64,11 @@ public class IndexController {
 	public void delete(Catalogo catalogo){
 		catalogoService.delete(catalogo);
 		result.redirectTo(this).index();
+	}
+	
+	@Get("/acervo/player")
+	public void player(){
+		
 	}
 
 }
