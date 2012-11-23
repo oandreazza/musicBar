@@ -43,5 +43,15 @@ public class CatalogoServiceTest {
 		assertEquals(ids[1], musics.get(1).getId());
 		assertEquals(ids[2], musics.get(2).getId());
 	}
+	
+	@Test
+	public void shouldDeleteCatalogo(){
+		Catalogo catalogo = new Catalogo();
+		catalogo.setId(12L);
+		service.delete(catalogo);
+		
+		verify(dao).excluir(captor.capture());
+		assertEquals(catalogo.getId(), captor.getValue().getId());
+	}
 
 }

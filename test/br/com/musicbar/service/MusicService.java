@@ -15,8 +15,8 @@ public class MusicService {
 		this.dao = dao;
 	}
 
-	public List<Music> search() {
-		return dao.listar();
+	public List<Music> search(Music musicFilter) {
+		return dao.listar(musicFilter);
 	}
 
 }

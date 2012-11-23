@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.com.musicbar.dao.MusicDao;
+import br.com.musicbar.model.Music;
 
 public class MusicServiceTest {
 	
@@ -25,8 +26,9 @@ public class MusicServiceTest {
 
 	@Test
 	public void shouldReturnListOfMusic() {
-		service.search();
-		verify(dao).listar();
+		Music music = new Music();
+		service.search(music);
+		verify(dao).listar(music);
 	}
 
 }

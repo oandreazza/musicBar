@@ -21,15 +21,17 @@ public class CatalogoService {
 	public void save(Long[] ids) {
 		Catalogo catalogo = new Catalogo();
 		List<Music> musicList = new ArrayList<Music>();
-		
 		for (int i = 0; i < ids.length; i++) {
 			Music music = new Music();
 			music.setId(ids[i]);
 			musicList.add(music);
 		}
-		
 		catalogo.setMusic(musicList);
 		dao.incluir(catalogo);
+	}
+
+	public void delete(Catalogo catalogo) {
+		dao.excluir(catalogo);
 	}
 
 }

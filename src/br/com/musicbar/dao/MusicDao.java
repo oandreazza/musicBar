@@ -6,6 +6,6 @@ import br.com.musicbar.model.Music;
 
 public interface MusicDao {
 
-	List<Music> listar();
+	List<Music> listar(Music musicFilter);
 
 }

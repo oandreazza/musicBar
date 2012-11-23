@@ -6,4 +6,6 @@ public interface CatalogoDao {
 
 	void incluir(Catalogo catalogo);
 
+	void excluir(Catalogo catalogo);
+
 }

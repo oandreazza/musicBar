@@ -48,7 +48,8 @@ public class IndexControllerTest {
 	@Test
 	public void shouldListAllMusics(){
 		controller.index();
-		verify(musicService).search();
+		verify(musicService).search(null);
 	}
+
 
 }

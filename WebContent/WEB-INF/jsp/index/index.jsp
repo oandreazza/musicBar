@@ -112,9 +112,8 @@
 				</div>
 				<div class="span4">	
 					<button class="btn">Limpar a lista</button>
-					<button class="btn btn-primary">Salvar</button>
 					<form action="<c:url value="/acervo/salvar"/>" method="post" id="form-music">
-						<input type="submit" value="enviar" />  
+						<button class="btn btn-primary">Salvar</button>
 					</form>
 				</div>
 			</div>
@@ -123,11 +122,11 @@
 	
 	<div class="modal hide" id="myModal">
 		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal">Ã—</button>
-		  <h3>AtenÃ§Ã£o!</h3>
+		  <button type="button" class="close" data-dismiss="modal">X—</button>
+		  <h3>Atenção!</h3>
 		</div>
 		<div class="modal-body">
-		  <p>Esta mÃºsica jÃ¡ existe no Acervo!<br>Por favor, escolha outra.</p>
+		  <p>Esta música já existe no Acervo!<br>Por favor, escolha outra.</p>
 		</div>
 		<div class="modal-footer">
 		  <a href="#" class="btn" data-dismiss="modal">OK</a>

@@ -20,6 +20,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.musicbar.model.Catalogo;
+import br.com.musicbar.model.Music;
 import br.com.musicbar.service.CatalogoService;
 import br.com.musicbar.service.MusicService;
 
@@ -38,7 +40,7 @@ public class IndexController {
 
 	@Path("/acervo")
 	public void index() {
-		result.include("musicList",musicService.search());
+		this.list(null);
 	}
 	
 	@Post
@@ -48,6 +50,19 @@ public class IndexController {
 		result.redirectTo(this).index();
 	}
 	
+	@Post("/acervo/search")
+	public void search(Music musicFilter){
+		this.list(musicFilter);
+	}
 	
+	private void list(Music musicFilter){
+		result.include("musicList",musicService.search(musicFilter));
+	}
+	
+	@Post("/acervo/delete")
+	public void delete(Catalogo catalogo){
+		catalogoService.delete(catalogo);
+		result.redirectTo(this).index();
+	}
 
 }
