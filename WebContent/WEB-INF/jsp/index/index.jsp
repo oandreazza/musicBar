@@ -73,9 +73,15 @@
     	
     	#header{
     		height: 100px;
+    		background-color: #207424;
+    		margin-bottom: 20px;
     	}
     	#botoes-form{
     		margin-top: 10px;
+    	}
+    	.control-label{
+    		color: #FFFCFC;
+			font-weight: bold;
     	}
     </style>
  </head>
@@ -83,6 +89,18 @@
 	
 	<div class='row-fluid'>
 		<div class="span12" id="header">
+			<form class="form-horizontal" style="margin-top:53px">
+			  <div class="control-group">
+			    <label class="control-label" for="inputEstabelecimento">Estabelecimento</label>
+			    <div class="controls">
+			      <select id="inputEstabelecimento">
+			      	<option>Selecione..</option>
+			      	<option>Bar do z√©</option>
+			      	<option>Botec√£o</option>
+			      </select>
+			    </div>
+			  </div>
+			</form>
 		</div>
 	</div>
 	
@@ -94,6 +112,18 @@
 						<li id="4">
 							<a href="#">+</a> 
 							<span class="nome">Musica 1</span>
+						</li>
+						<li id="3">
+							<a href="#">+</a> 
+							<span class="nome">Musica 2</span>
+						</li>
+						<li id="2">
+							<a href="#">+</a> 
+							<span class="nome">Musica 3</span>
+						</li>
+						<li id="1">
+							<a href="#">+</a> 
+							<span class="nome">Musica 4</span>
 						</li>
 					</ul>
 				</div>
@@ -122,11 +152,11 @@
 	
 	<div class="modal hide" id="myModal">
 		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal">Xó</button>
-		  <h3>AtenÁ„o!</h3>
+		  <button type="button" class="close" data-dismiss="modal">X</button>
+		  <h3>Aten√ß√£o!</h3>
 		</div>
 		<div class="modal-body">
-		  <p>Esta m˙sica j· existe no Acervo!<br>Por favor, escolha outra.</p>
+		  <p>Esta m√∫sica j√° existe no Acervo!<br>Por favor, escolha outra.</p>
 		</div>
 		<div class="modal-footer">
 		  <a href="#" class="btn" data-dismiss="modal">OK</a>
