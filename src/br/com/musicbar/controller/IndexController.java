@@ -22,6 +22,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.musicbar.model.Catalogo;
+import br.com.musicbar.model.Estabelecimento;
 import br.com.musicbar.model.Music;
 import br.com.musicbar.service.CatalogoService;
 import br.com.musicbar.service.MusicService;
@@ -32,11 +33,13 @@ public class IndexController {
 	private final Result result;
 	private final CatalogoService catalogoService;
 	private final MusicService musicService;
+	private final Estabelecimento estab;
 
-	public IndexController(Result result, CatalogoService catalogoService, MusicService musicService) {
+	public IndexController(Result result, CatalogoService catalogoService, MusicService musicService, Estabelecimento estab) {
 		this.result = result;
 		this.catalogoService = catalogoService;
 		this.musicService = musicService;
+		this.estab = estab;
 	}
 
 	@Path("/acervo")

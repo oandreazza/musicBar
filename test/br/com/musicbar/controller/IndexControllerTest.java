@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.musicbar.controller.IndexController;
+import br.com.musicbar.model.Estabelecimento;
 import br.com.musicbar.model.Music;
 import br.com.musicbar.service.CatalogoService;
 import br.com.musicbar.service.MusicService;
@@ -28,11 +29,13 @@ public class IndexControllerTest {
 	private CatalogoService catalogoService;
 	@Mock
 	private MusicService musicService;
+	@Mock
+	private Estabelecimento estab;
 
 	@Before
 	public void setUp(){
 		MockitoAnnotations.initMocks(this);
-		controller = new IndexController(result,catalogoService, musicService);
+		controller = new IndexController(result,catalogoService, musicService,estab);
 	}
 	
 	@Test
