@@ -41,9 +41,14 @@ public class IndexController {
 		this.musicService = musicService;
 		this.estab = estab;
 	}
+	
+	@Path("/")
+	public void index(){
+		result.redirectTo(this).acervo();
+	}
 
 	@Path("/acervo")
-	public void index() {
+	public void acervo() {
 		this.list(null);
 	}
 	
@@ -51,7 +56,7 @@ public class IndexController {
 	@Path("/acervo/salvar")
 	public void save(Long[] ids){
 		catalogoService.save(ids);
-		result.redirectTo(this).index();
+		result.redirectTo(this).acervo();
 	}
 	
 	@Post("/acervo/search")

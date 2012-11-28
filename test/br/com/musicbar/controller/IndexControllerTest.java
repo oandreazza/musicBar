@@ -50,7 +50,7 @@ public class IndexControllerTest {
 	
 	@Test
 	public void shouldListAllMusics(){
-		controller.index();
+		controller.acervo();
 		verify(musicService).search(null);
 	}
 
