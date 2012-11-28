@@ -14,6 +14,21 @@
     
     <script type="text/javascript">
     $(function(){
+    	
+    	$("#form_music").on('submit',function(){
+    		if($('#lista-atual li').length == 0){
+    			$("#descriptionError").html('Você deve selecionar ao menos uma música');
+    			$('#myModal').modal();
+    			return false;
+    		}
+    		
+    		if($('#inputEstabelecimento').val() == 0){
+    			$("#descriptionError").html('Você deve selecionar um estabelecimento');
+    			$('#myModal').modal();
+    			return false;
+    		}
+    	});
+    	
     	$('#lista-disponiveis li a').on('click',function(){
     		var podeTransferir = true;
     		var texto = $(this).parent().find(".nome").text();
@@ -43,9 +58,12 @@
 					name: 'ids[]'
 				}));
     		}else{
+    			$("#descriptionError").html('Esta música já existe no Acervo!<br>Por favor, escolha outra.');
     			$('#myModal').modal();
     		}
     	});
+    	
+    	
     });
     </script>
 
@@ -99,7 +117,7 @@
 			    <label class="control-label" for="inputEstabelecimento">Estabelecimento</label>
 			    <div class="controls">
 			      <select id="inputEstabelecimento">
-			      	<option>Selecione..</option>
+			      	<option value="0">Selecione..</option>
 			      	<option>Bar do zé</option>
 			      	<option>Botecão</option>
 			      </select>
@@ -147,7 +165,7 @@
 				</div>
 				<div class="span4">	
 					<button class="btn"id="cleanList">Limpar a lista</button>
-					<form action="<c:url value="/acervo/salvar"/>" method="post" id="form-music">
+					<form action="<c:url value="/acervo/salvar"/>" method="post"  id="form_music">
 						<button class="btn btn-primary">Salvar</button>
 					</form>
 				</div>
@@ -161,7 +179,7 @@
 		  <h3>Atenção!</h3>
 		</div>
 		<div class="modal-body">
-		  <p>Esta música já existe no Acervo!<br>Por favor, escolha outra.</p>
+		  <p id="descriptionError"></p>
 		</div>
 		<div class="modal-footer">
 		  <a href="#" class="btn" data-dismiss="modal">OK</a>
